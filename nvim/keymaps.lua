@@ -9,9 +9,6 @@ vim.keymap.set("n", "cp", "<cmd> let @+ = expand('%:.')<CR>", { desc = "Copy fil
 vim.keymap.set("i", "jj", "<ESC>", { silent = true })
 
 -- Replace the word cursor is on globally
-vim.keymap.set(
-  "n",
-  "<leader>r",
-  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  { desc = "Replace word cursor is on globally" }
-)
+vim.keymap.set("n", "<leader>r", function()
+	vim.lsp.buf.rename()
+end, { desc = "Replace word cursor is on globally" })
